@@ -12,9 +12,10 @@ int main()
 	int n;
 	double step;
 	double x, y;
-
+        do {
 	printf("Введите a:");
 	scanf("%lf", &a);
+	} while (a<0);
 
 	do {
 		
