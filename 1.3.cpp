@@ -10,9 +10,12 @@ int main() {
     double P, T, q, N; // Ввод данных
 
     // Проверка условий 
-    do {
+     do {
         printf("Введите начальную массу вещества (P): ");
         scanf("%lf", &P);
+    } while (P<0);
+    
+    do{
         printf("Введите ежедневное изъятие вещества (T): ");
         scanf("%lf", &T);
     } while (P < T);
@@ -24,7 +27,7 @@ int main() {
 
     do {
         printf("Введите количество дней (N): ");
-        scanf("%lf", &N);
+        scanf("%i", &N);
     } while (N < 0);
 
                  
