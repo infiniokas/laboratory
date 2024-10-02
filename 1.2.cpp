@@ -22,7 +22,7 @@ int main()
 		printf("Введите b (b > a):");
 		scanf("%lf", &b);
 	
-	} while (b <= a);
+	} while (b < a);
 
 	do {
 
