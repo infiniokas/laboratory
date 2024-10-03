@@ -29,9 +29,9 @@ int main()
 		printf("Введите n (количество значений [a,b]):");
 		scanf("%i", &n);
 	
-	} while (n < 0);
+	} while (n <= 0);
 
-	step = (b - a) / n * 1.0;
+	step = (b - a) / n;
 	printf("    Таблица функций\n");
 	printf("N        x         y\n");
 
