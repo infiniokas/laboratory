@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+
+    do {
+        printf("Введите размер массива (n): ");
+        scanf("%d", &n);
+    } while (n <= 0 || n >= 20);
+
+    int A[n];
+    printf("Введите элементы массива:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &A[i]);
+    }
+    printf("Введенные элементы массива:");
+    for (int i = 0; i < n; i++) {
+        printf(" %d ", A[i]);
+    }
+
+    int flag = 1; // Флаг для отслеживания сортировки
+    for (int i = 1; i < n; i++) {
+        if (A[i] < A[i - 1]) {
+            if (flag) {
+                printf("\nМассив не отсортирован\n");
+                flag = 0;
+            }
+            printf("На позиции %d нарушение: %d\n", i, A[i]);
+        }
+    }
+
+    if (flag) {
+        printf("\n Массив отсортирован по возрастанию.\n");
+    }
+
+    return 0;
+}
