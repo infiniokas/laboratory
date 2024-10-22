@@ -5,24 +5,24 @@
 
 int main() {
     int A[10][2];
-    int v = 0, first = 0;
+    int count = 0;
 
-    printf("ââåäèòå ýëåìåíòû: ");
+    printf("Введите элементы: ");
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 2; j++) {
             scanf("%d", &A[i][j]);
         }
     }
 
-    first = A[0][0] - A[0][1];
+    printf("Элементы первой строки, большие соответствующих элементов второй строки:\n");
     for (int i = 0; i < 10; i++) {
-        v = A[i][0] - A[i][1];
-        printf("%d ", v);
-        if ((v * first) <= 0) {
-            return 1;
+        if (A[i][0] > A[i][1]) {
+            printf("%d ", A[i][0]);
+            count++;
         }
     }
-    printf("\n");
+
+    printf("\nКоличество таких элементов: %d\n", count);
 
     return 0;
 }
