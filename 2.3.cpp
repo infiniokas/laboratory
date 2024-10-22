@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 int main() {
-    int n, K, L;
+    int n;
     do {
         printf("Ââåäèòå ðàçìåð ìàññèâà (n): ");
         scanf("%i", &n);
