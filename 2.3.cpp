@@ -27,6 +27,8 @@ int main() {
         if (A[i] > max_f) {
             max_s = max_f;
             max_f = A[i];
+        } else if (A[i] > max_s) {
+            max_s = A[i];
         }
     }
     for (int i = 2; i < n; i++) {
