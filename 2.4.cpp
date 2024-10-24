@@ -20,20 +20,20 @@ int main() {
         printf(" %d ", A[i]);
     }
 
-    int flag = 1; // Ôëàã äëÿ îòñëåæèâàíèÿ ñîðòèðîâêè
-    for (int i = 1; i < n; i++) {
-        if (A[i] < A[i - 1]) {
-            if (flag) {
-                printf("\nÌàññèâ íå îòñîðòèðîâàí\n");
-                flag = 0;
-            }
-            printf("Íà ïîçèöèè %d íàðóøåíèå: %d\n", i, A[i]);
+    flag = 1; // Флаг для отслеживания сортировки
+    i=0;
+    while (flag && i<n)
+        if (A[i] < A[i-1]) 
+            flag=false;
+        else
+            i++;
+    
+    if (!flag) {
+        printf("\nМассив не отсортирован\n");
+        printf("На позиции %d нарушение: %d\n", i, A[i]);
         }
-    }
 
-    if (flag) {
-        printf("\n Ìàññèâ îòñîðòèðîâàí ïî âîçðàñòàíèþ.\n");
-    }
+    else printf("\n Массив отсортирован по возрастанию.\n");
 
     return 0;
 }
