@@ -1,27 +1,44 @@
 //Для массива из 2 строк и 10 столбцов напечатать каждый элемент 1-ой строки, который больше находящегося в одном с ним столбце элемента 2-ой строки, и 
 //число таких случаев.
-
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-    int A[2][10];
-    int count = 0;
+    int count=0;
+    double **A;
 
-    printf("ââåäèòå ýëåìåíòû: ");
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 10; j++) {
-            scanf("%i", &A[i][j]);
+     A = new double*[2];
+    //Ввод матрицы [2 x 10]
+    printf("Введите матрицу [2 x 10] \n");
+    for(int i = 0; i < 2; i++) {
+        A[i] = new double[10];
+        for(int j = 0; j < 10; j++) {
+             printf("Введите элемент [%i][%i]: ", i, j);
+             scanf("%lf", &A[i][j]);
         }
     }
-    printf("Ýëåìåíòû ïåðâîé ñòðîêè, áîëüøå ñîîòâåòñòâóþùèõ ýëåìåíòîâ âòîðîé ñòðîêè:\n");
-    for (int j = 0; j < 10; j++) {
+
+    printf("Вы ввели матрицу: \n");
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 10; j++) {
+             printf("%.2f ", A[i][j]);
+        }
+        printf("\n");
+    }
+
+     for (int j = 0; j < 10; j++) {
         if (A[0][j] > A[1][j]) {
-            printf("%i", A[0][j]);
+            printf("%.2lf", A[0][j]);
             count++;
         }
 
     }
-    printf("\nêîë-âî %i\n", count);
+
+    printf("\nКоличество элементов: %d\n", count);
+    for (int i = 0; i < 2; i++) {
+        delete[] A[i];
+    }
+    delete[] A;
 
     return 0;
 }
