@@ -22,21 +22,23 @@ int main() {
         }
     }
 
-    int found = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
+   int flag = 0;
+    int c = -1; 
+
+    for (int i = 0; i < n && !flag; i++) {
+        for (int j = 0; j < m && !flag; j++) {
             if (A[i][j] == chislo) {
-                found = 1;
-                printf("\níàéäåíî: %i, %i,%i", chislo, i, j);
-                return 1;
+                flag = 1;
+                c = j;
             }
         }
-        if (!found) {
-            printf("íè÷åãî íå íàéäåíî");
-        }
-
     }
-    printf("\n");
+
+    if (found) {
+        printf("Найдено: %d, столбец: %d\n", chislo, c + 1);
+    } else {
+        printf("Ничего не найдено\n");
+    }
 
     return 0;
 }
