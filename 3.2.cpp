@@ -34,7 +34,7 @@ int main() {
         double d = A[i][0] - A[i][1];
         printf("%lf ", d);
 
-        if (diff * firstDiff <= 0) {
+        if (d * first <= 0) {
             c = 0;
         }
     }
