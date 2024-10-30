@@ -4,25 +4,45 @@
 #include <stdio.h>
 
 int main() {
-    int A[10][2];
-    int count = 0;
+    double *A[2];  
 
-    printf("Введите элементы: ");
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 2; j++) {
-            scanf("%d", &A[i][j]);
+    // Ввод матрицы [2 x 10]
+    printf("Введите матрицу [2 x 10] \n");
+    for(int i = 0; i < 2; i++) {
+        A[i] = new double[10];
+        for(int j = 0; j < 10; j++) {
+            printf("Введите элемент [%i][%i]: ", i, j);
+            scanf("%lf", &A[i][j]);
         }
     }
 
-    printf("Элементы первой строки, большие соответствующих элементов второй строки:\n");
-    for (int i = 0; i < 10; i++) {
-        if (A[i][0] > A[i][1]) {
-            printf("%d ", A[i][0]);
-            count++;
+    // Вывод матрицы
+    printf("Вы ввели матрицу: \n");
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 10; j++) {
+            printf("%lf ", A[i][j]);
+        }
+        printf("\n");
+    }
+
+    double first = A[0][0] - A[0][1];
+    printf("Разности элементов строк:\n");
+
+    int i;
+    int c = 1;
+    for (i = 0; i < 10 && c; i++) {
+        double d = A[i][0] - A[i][1];
+        printf("%lf ", d);
+
+        if (diff * firstDiff <= 0) {
+            c = 0;
         }
     }
 
-    printf("\nКоличество таких элементов: %d\n", count);
+    // Освобождение памяти
+    for (int i = 0; i < 2; i++) {
+        delete[] A[i];
+    }
 
     return 0;
 }
