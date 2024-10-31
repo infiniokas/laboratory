@@ -5,20 +5,22 @@ int main() {
     int n, m;
     int chislo;
 
-    printf("Ââåäèòå ðàçìåð ìàññèâà (n): ");
+    printf("введите n ");
     scanf("%i", &n);
-    printf("Ââåäèòå ðàçìåð ìàññèâà (m): ");
+    printf("введите m ");
     scanf("%i", &m);
 
-    printf("Ââåäèòå ÷èñëî:");
+    printf("введите число");
     scanf("%i", &chislo);
 
-    int A[n][m];
-    printf("ââåäèòå ýëåìåíòû: ");
+    double** A;
+    A = new double*[n];
+    printf("введенные значения");
     for (int i = 0; i < n; i++) {
+         A[i] = new double[m];
         for (int j = 0; j < m; j++) {
-            scanf("%d", &A[i][j]);
-            printf(" %d ", A[i][j]);
+            scanf("%lf", &A[i][j]);
+            printf(" %lf ", A[i][j]);
         }
     }
 
