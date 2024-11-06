@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main() {
-    double *A;  
+    double **A;  
     
     A=new double*[2];
     // Ввод матрицы [2 x 10]
@@ -17,27 +17,21 @@ int main() {
         }
     }
 
-    // Вывод матрицы
-    printf("Вы ввели матрицу: \n");
-    for(int i = 0; i < 2; i++) {
-        for(int j = 0; j < 10; j++) {
-            printf("%lf ", A[i][j]);
-        }
-        printf("\n");
-    }
+
 
     double first = A[0][0] - A[0][1];
     printf("Разности элементов строк:\n");
     
     bool c = true;
-    for (int i = 0; i < 2 && c; i++) {
+    for (int i = 0; i < 2 && c; i++){
+         for(int j = 0; j < 10; j++) {
         double d = A[i][0] - A[i][1];
         printf("%lf ", d);
 
         if (d * first <= 0) {
             c = false;
         }
-    }
+    }}
 
     delete[] A;
 
