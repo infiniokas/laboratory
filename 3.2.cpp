@@ -4,8 +4,9 @@
 #include <stdio.h>
 
 int main() {
-    double *A[2];  
-
+    double *A;  
+    
+    A=new double*[2];
     // Ввод матрицы [2 x 10]
     printf("Введите матрицу [2 x 10] \n");
     for(int i = 0; i < 2; i++) {
@@ -27,22 +28,18 @@ int main() {
 
     double first = A[0][0] - A[0][1];
     printf("Разности элементов строк:\n");
-
-    int i;
-    int c = 1;
-    for (i = 0; i < 10 && c; i++) {
+    
+    bool c = true;
+    for (int i = 0; i < 2 && c; i++) {
         double d = A[i][0] - A[i][1];
         printf("%lf ", d);
 
         if (d * first <= 0) {
-            c = 0;
+            c = false;
         }
     }
 
-    // Освобождение памяти
-    for (int i = 0; i < 2; i++) {
-        delete[] A[i];
-    }
+    delete[] A;
 
     return 0;
 }
