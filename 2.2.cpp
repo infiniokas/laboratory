@@ -85,3 +85,50 @@ int main() {
     delete[] A;
 
     return 0;
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    double **A;  
+    int n;
+
+    printf("Введите количество элементов в строке (n): ");
+    scanf("%d", &n);
+
+    // Выделяем память для строк
+    A = new double*[2];
+
+    for (int i = 0; i < 2; i++) {
+        // Выделяем память для каждого ряда
+        A[i] = new double[n];
+        for (int j = 0; j < n; j++) {
+            printf("Введите элемент [%i][%i]: ", i, j);
+            scanf("%lf", &A[i][j]);
+        }
+    }
+
+    printf("Разности элементов первой строки:n");
+    double first = A[0][0] - A[0][1];
+
+    // Проверка разности для каждого элемента в строке
+    bool c = true;
+    for (int i = 0; i < 2 && c; i++){
+        for (int j = 0; j < n && c; j++) {
+            double d = A[i][0] - A[i][1];
+            printf("%lf ", d);
+
+            if (d * first <= 0) {
+                c = false;
+            }
+        }
+        printf("n");
+    }
+
+    // Освобождение памяти
+    for (int i = 0; i < 2; i++) {
+        delete[] A[i];
+    }
+    delete[] A;
+
+    return 0;
+}
