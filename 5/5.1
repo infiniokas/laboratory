@@ -42,3 +42,50 @@ int main() {
 
     return 0;
 }
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    printf("Введите размер массива: ");
+    scanf("%d", &n);
+    printf("Введите число k: ");
+    scanf("%d", &k);
+
+    int arr[n];
+    printf("Введите элементы массива: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int min_pos = -1; // Инициализируем -1, чтобы указать, что по умолчанию нет положительных чисел
+    int found_multiple = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % k == 0 && !found_multiple) {
+            found_multiple = 1; // Найдено первое кратное k
+        } else if (arr[i] > 0 && found_multiple) {
+            if (min_pos == -1 || arr[i] < min_pos) {
+                min_pos = arr[i]; // Обновляем min_pos, если найденное число меньше текущего min_pos
+            }
+        }
+    }
+
+    // Если не нашли кратного k, ищем с начала
+    if (!found_multiple) {
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > 0) {
+                if (min_pos == -1 || arr[i] < min_pos) {
+                    min_pos = arr[i]; // Обновляем min_pos, если найденное число меньше текущего min_pos
+                }
+            }
+        }
+    }
+
+    if (min_pos == -1) {
+        printf("Нет положительных элементов после первого кратного kn");
+    } else {
+        printf("Минимальный положительный элемент: %dn", min_pos);
+    }
+
+    return 0;
+}
