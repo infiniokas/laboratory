@@ -37,3 +37,44 @@ int main() {
     
     return 0;
 }
+#include <stdio.h>
+
+int main() {
+    double **A;  
+    int n;
+    printf("Введите количество столбцов (n): ");
+    scanf("%d", &n);
+
+    // Выделяем память для 2 строк
+    A = new double*[2];
+    for (int i = 0; i < 2; i++) {
+        A[i] = new double[n];  // Выделяем память для n столбцов
+    }
+
+    printf("Введите матрицу 2x%d\n", n);
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("Введите элемент [%i][%i]: ", i, j);
+            scanf("%lf", &A[i][j]);
+        }
+    }
+
+    double *result = new double[n];  // Массив для хранения разностей
+    printf("Разности элементов строк:\n");
+    
+    // Вычисляем разности для каждого столбца
+    for (int j = 0; j < n; j++) {
+        result[j] = A[0][j] - A[1][j];  // Разности элементов строк
+        printf("%lf ", result[j]); // Выводим разности
+    }
+    printf("\n");
+
+    // Освобождаем выделенную память
+    for (int i = 0; i < 2; i++) {
+        delete[] A[i];  // Удаляем строки
+    }
+    delete[] A;  // Удаляем массив указателей
+    delete[] result;  // Удаляем массив разностей
+
+    return 0;
+} 
