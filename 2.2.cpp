@@ -48,3 +48,40 @@ int main() {
 
     return 0;
 }
+#include <stdio.h>
+
+int main() {
+    double **A;  
+    int n;
+    printf("введите кол-во:");
+    scanf("%d",&n);
+    A=new double*[2];
+    printf("Введите матрицу\n");
+    for(int i = 0; i < 2; i++) {
+        A = new double*[n];
+        for(int j = 0; j < n; j++) {
+            printf("Введите элемент [%i][%i]: ", i, j);
+            scanf("%lf", &A[i][j]);
+        }
+    }
+
+
+
+    double first = A[0][0] - A[0][1];
+    printf("Разности элементов строк:\n");
+    
+    bool c = true;
+    for (int i = 0; i < 2 && c; i++){
+        for(int j = 0; j < 10 && c; j++) {
+            double d = A[i][0] - A[i][1];
+            printf("%lf ", d);
+
+        if (d * first <= 0) {
+            c = false;
+        }
+     }
+    }
+
+    delete[] A;
+
+    return 0;
