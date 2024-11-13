@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <iostream>
+#include <cstdlib>  
+using namespace std;
+
+void printDiagonal(int n, int **A) {
+    for (int i = 0; i < n; i++) {
+        printf(" %d ", A[i][i]); 
+    }
+   \
+}
+
+int main() {
+    int n;
+    printf("Введите размер матрицы: ");
+    scanf("%d",&n);
+    
+    FILE * fi=fopen("massive.txt","r");
+    int **A = new int*[n];
+    for (int i = 0; i < n; i++) {
+        A[i] = new int[n];
+        for (int j = 0; j < n; j++) {
+            fscanf(fi, "%d", &A[i][j]);
+            printf(" %d ", A[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    
+    int* B;
+    B = new int[n];
+    for (int j = 0; j < n; j++) {
+        int diagonal = A[j][j]; 
+        bool flag = true;
+        printf("\n");
+        for (int i = 0; i < n && flag; i++) {
+            if (A[i][j] > diagonal) {
+                flag = false;
+
+            }
+        }
+        if (flag) {
+            B[j] = 1;
+
+        }
+        else {
+            B[j] = 0;
+        }
+
+    }
+    fclose(fi);
+    fi=fopen("answer.txt","w");
+    printf("Элементы главной диагонали: ");
+    printDiagonal(n, A);
+    printf("\n");
+    for (int i = 0; i < n; i++) {
+        fprintf(fi, "%d ", B[i]); 
+        printf(" %d ", B[i]);
+    }
+    fprintf(fi, "\n");
+    fclose(fi);
+
+    for (int i = 0; i < n; i++) {
+        delete[] A[i];
+    }
+    
+    delete[] B;
+    delete[] A;
+
+    return 0;
+}
