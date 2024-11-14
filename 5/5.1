@@ -89,3 +89,44 @@ int main() {
 
     return 0;
 }
+
+
+
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    printf("Введите размер массива: ");
+    scanf("%d", &n);
+    printf("Введите число k: ");
+    scanf("%d", &k);
+
+    int arr[n];
+    printf("Введите элементы массива: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int min_pos = -1;
+    int found_first_multiple = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % k == 0) {
+            found_first_multiple = 1;
+        }
+
+        if (found_first_multiple && arr[i] > 0) {
+            if (min_pos == -1 || arr[i] < min_pos) {
+                min_pos = arr[i];
+            }
+        }
+    }
+
+    if (min_pos == -1) {
+        printf("Нет положительных элементов после первого кратного k\n");
+    } else {
+        printf("Минимальный положительный элемент: %d\n", min_pos);
+    }
+
+    return 0;
+}
